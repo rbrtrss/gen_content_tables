@@ -4,6 +4,6 @@ list=$1
 
 IFS=',' read -r -a array <<< "$list"
 for index in "${!array[@]}"; do
-	echo "${array[$index]} -> $index"
+	echo "${array[$index]} -> $((index + 1))"
 done
 

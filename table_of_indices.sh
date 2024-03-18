@@ -5,6 +5,9 @@ interactions=false
 ival=-42
 file=""
 
+script_dir="$(dirname "${BASH_SOURCE[0]}")"
+table_of_interactions="$script_dir/table_of_interactions.sh" 
+
 while [ "$#" -gt 0 ]; do
 	case "$1" in
 		-i)
@@ -40,7 +43,7 @@ while IFS= read -r line; do
 	if $interactions; then
 		if [[ $line =~ ^structure  || $line =~ ^E ]]; then
 			if [ $ival -lt 0 ] || [ $ival = $((index - 1)) ]; then
-				./table_of_interactions.sh "$line"
+				"$table_of_interactions" "$line"
 			fi
 		fi
 	fi
